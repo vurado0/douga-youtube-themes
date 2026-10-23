@@ -8,13 +8,13 @@
 
 Black-and-white kawaii, quiet washi paper, sakura pastels, night-market neon and a pocket 8-bit handheld. One install, every volume, one keystroke to switch.
 
-[![Version](https://img.shields.io/github/v/release/vurado0/douga-youtube-themes?label=version&color=0A0A0A)](https://github.com/vurado0/douga-youtube-themes/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.0.0-0A0A0A)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0A0A0A)](LICENSE)
 ![Safari](https://img.shields.io/badge/Safari-supported-0A0A0A?logo=safari&logoColor=white)
 ![Chrome · Arc · Edge · Brave](https://img.shields.io/badge/Chrome%20·%20Arc%20·%20Edge%20·%20Brave-supported-0A0A0A?logo=googlechrome&logoColor=white)
 ![Firefox](https://img.shields.io/badge/Firefox-supported-0A0A0A?logo=firefoxbrowser&logoColor=white)
 
-[**Download**](https://github.com/vurado0/douga-youtube-themes/releases/latest) · [**Install guide**](docs/INSTALL.md) · [**The collection**](docs/THEMES.md) · [**FAQ**](#faq)
+[**Download**](#get-douga-in-60-seconds) · [**Install guide**](docs/INSTALL.md) · [**The collection**](docs/THEMES.md) · [**FAQ**](#faq)
 
 <img src="assets/previews/banner.png" alt="All five DOUGA volumes side by side on the YouTube home page" width="100%">
 
@@ -159,7 +159,7 @@ Your choice is remembered per browser.
 
 The short version for Arc / Chrome:
 
-1. Download **`douga-extension-v1.0.0.zip`** from the [latest release](https://github.com/vurado0/douga-youtube-themes/releases/latest) and unzip it.
+1. Download **[`douga-extension-v1.0.0.zip`](https://github.com/vurado0/douga-youtube-themes/raw/main/dist/douga-extension-v1.0.0.zip)** and unzip it.
 2. Open `arc://extensions` (or `chrome://extensions`), switch on **Developer mode**.
 3. Click **Load unpacked** and choose the `douga-extension` folder. Open YouTube. Done.
 
@@ -176,7 +176,7 @@ The short version for Arc / Chrome:
 
 All five volumes · every future volume · all browsers · source code included
 
-[Download →](https://github.com/vurado0/douga-youtube-themes/releases/latest)
+[Download →](#get-douga-in-60-seconds)
 
 </td>
 <td align="center" width="50%">
@@ -202,7 +202,7 @@ Stars decide which volume gets made next. Ideas for Vol.06? [Open an issue](http
 
 **Does it work with YouTube Premium, logged out, in theater mode?**  Yes. In theater and fullscreen the player frame steps aside so the video gets the whole screen.
 
-**YouTube changed something and a part looks off.**  YouTube ships layout changes regularly. [Open an issue](https://github.com/vurado0/douga-youtube-themes/issues) with a screenshot — fixes go out as new releases.
+**YouTube changed something and a part looks off.**  YouTube ships layout changes regularly. [Open an issue](https://github.com/vurado0/douga-youtube-themes/issues) with a screenshot — fixes go out as new versions.
 
 **Can I make my own volume?**  Yes — a volume is about 30 lines of design tokens. See [Make your own volume](docs/THEMES.md#make-your-own-volume).
 

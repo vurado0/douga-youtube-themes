@@ -29,7 +29,7 @@ Pick your browser, follow the steps, open YouTube. Every route installs **all fi
 Download links used below:
 
 - **Userscript:** [`dist/douga.user.js`](../dist/douga.user.js) — [raw link for installing](https://raw.githubusercontent.com/vurado0/douga-youtube-themes/main/dist/douga.user.js)
-- **Extension:** `douga-extension-v1.0.0.zip` on the [Releases page](https://github.com/vurado0/douga-youtube-themes/releases/latest)
+- **Extension:** [`douga-extension-v1.0.0.zip`](https://github.com/vurado0/douga-youtube-themes/raw/main/dist/douga-extension-v1.0.0.zip)
 - **Stylus styles:** [`dist/stylus/`](../dist/stylus)
 
 ---
@@ -56,7 +56,7 @@ Safari has no Chrome-style "load unpacked". The free, open-source **Userscripts*
 
 Works in every Chromium browser: Arc, Chrome, Edge, Brave, Opera, Vivaldi.
 
-1. **Download** `douga-extension-v1.0.0.zip` from the [latest release](https://github.com/vurado0/douga-youtube-themes/releases/latest).
+1. **Download** [`douga-extension-v1.0.0.zip`](https://github.com/vurado0/douga-youtube-themes/raw/main/dist/douga-extension-v1.0.0.zip).
 2. **Unzip it.** On a Mac a double-click does it. You get a folder called **`douga-extension`** — keep it somewhere permanent (e.g. `Documents/`), the browser loads it from there.
 3. **Open the extensions page:**
 
@@ -147,7 +147,7 @@ Light/dark: Shirokuro, Washi and Sakura follow YouTube's own appearance setting 
 ## Updating
 
 - **Userscripts / Violentmonkey:** use the manager's *Check for updates* — the script updates from this repo.
-- **Extension:** download the new release zip, replace the contents of your `douga-extension` folder, then press the **↻ reload** button on the extensions page.
+- **Extension:** download the new zip from `dist/`, replace the contents of your `douga-extension` folder, then press the **↻ reload** button on the extensions page.
 - **Stylus:** reinstall the style from `dist/stylus/`.
 - **Safari native:** `git pull && ./scripts/build-safari.sh`.
 
