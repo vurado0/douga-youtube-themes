@@ -21,7 +21,7 @@ Pick your browser, follow the steps, open YouTube. Every route installs **all fi
 | Browser | Method | Theme switcher | Auto-updates |
 |---|---|---|---|
 | Safari (Mac) | [Userscripts app](#safari--userscripts-app) | Shortcut | Yes, via the script's update URL |
-| Arc · Chrome · Edge · Brave · Opera · Vivaldi | [Extension](#arc-chrome-edge-brave--extension) | Toolbar menu + shortcut | Re-download a release |
+| Arc · Chrome · Edge · Brave · Opera · Vivaldi | [Extension](#arc-chrome-edge-brave--extension) | Toolbar menu + shortcut | Re-download the zip |
 | Firefox | [Violentmonkey](#firefox--violentmonkey) | Shortcut | Yes |
 | Any browser with Stylus | [Stylus](#any-browser--stylus) | One style per volume (toggle in Stylus) | Re-import |
 | Safari, no add-on app | [Native extension](#safari--native-extension-with-xcode) | Toolbar menu + shortcut | Rebuild |
