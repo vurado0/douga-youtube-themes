@@ -1,0 +1,40 @@
+/* @id sakura
+   @vol 03
+   @name Sakura Pop
+   @jp 桜
+   @tagline Pastel petals, plum outlines, blushing mascot.
+   @swatches #FFF6F8,#FF8FB4,#3B2A33,#FFE4EC */
+
+html:not([dark]) {
+  --kw-bg: #FFF6F8; --kw-ink: #3B2A33; --kw-sub: #7A5F6B; --kw-soft: #FFE4EC;
+  --kw-line: #3B2A33; --kw-accent: #FF8FB4; --kw-on-accent: #3B2A33;
+  --kw-shade: #FFB3C9;
+  --kw-dot: rgba(255,92,147,.16);
+  --kw-logo: url("{{logo:sakura-light.svg}}");
+}
+html[dark] {
+  --kw-bg: #1E1520; --kw-ink: #FFE9F0; --kw-sub: #C9A6B4; --kw-soft: #2A1D2C;
+  --kw-line: #FFB3C9; --kw-accent: #FF8FB4; --kw-on-accent: #1E1520;
+  --kw-shade: #FF5C93;
+  --kw-dot: rgba(255,143,180,.14);
+  --kw-logo: url("{{logo:sakura-dark.svg}}");
+}
+html {
+  --kw-bw: 2px;
+  --kw-r: 20px;
+  --kw-r-lg: 26px;
+  --kw-avatar-r: 50%;
+  --kw-shadow-sm: 3px 3px 0 var(--kw-shade);
+  --kw-shadow: 4px 4px 0 var(--kw-shade);
+  --kw-shadow-lg: 7px 7px 0 var(--kw-shade);
+  --kw-shadow-hover: 6px 6px 0 var(--kw-shade);
+  --kw-pattern: radial-gradient(var(--kw-dot) 2px, transparent 2.6px);
+  --kw-pattern-size: 22px 22px;
+  --kw-thumb-filter: saturate(.9) brightness(1.03);
+  --kw-progress: #FF8FB4;
+  --kw-font-display: 'Mochiy Pop One', 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
+  --kw-display-weight: 400;
+  --kw-font-meta: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', sans-serif;
+  --kw-now-playing: "✿ いまみてる";
+  --kw-next-label: "✿ つぎはこれ";
+}

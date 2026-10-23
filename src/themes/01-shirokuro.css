@@ -1,0 +1,25 @@
+/* @id shirokuro
+   @vol 01
+   @name Shirokuro
+   @jp 白黒
+   @tagline Kawaii × electro, strictly black & white.
+   @swatches #0A0A0A,#FFFFFF,#555555,#F2F2F2 */
+
+html:not([dark]) {
+  --kw-bg: #FFFFFF; --kw-ink: #0A0A0A; --kw-sub: #555555; --kw-soft: #F2F2F2;
+  --kw-line: #0A0A0A; --kw-accent: #0A0A0A; --kw-on-accent: #FFFFFF;
+  --kw-dot: rgba(10,10,10,.09);
+  --kw-logo: url("{{logo:shirokuro-light.svg}}");
+}
+html[dark] {
+  --kw-bg: #0A0A0A; --kw-ink: #FFFFFF; --kw-sub: #B8B8B8; --kw-soft: #161616;
+  --kw-line: #FFFFFF; --kw-accent: #FFFFFF; --kw-on-accent: #0A0A0A;
+  --kw-dot: rgba(255,255,255,.10);
+  --kw-logo: url("{{logo:shirokuro-dark.svg}}");
+}
+html {
+  --kw-pattern: radial-gradient(var(--kw-dot) 1.1px, transparent 1.5px);
+  --kw-pattern-size: 16px 16px;
+  --kw-thumb-filter: grayscale(1) contrast(1.08);
+  --kw-progress: #FFFFFF;
+}

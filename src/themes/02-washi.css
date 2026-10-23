@@ -1,0 +1,39 @@
+/* @id washi
+   @vol 02
+   @name Washi
+   @jp 和紙
+   @tagline Quiet paper, sumi ink and one vermilion seal.
+   @swatches #F7F5F0,#1C1B19,#B5452C,#DCD7CC */
+
+html:not([dark]) {
+  --kw-bg: #F7F5F0; --kw-ink: #1C1B19; --kw-sub: #625E56; --kw-soft: #EDE9E1;
+  --kw-line: #DCD7CC; --kw-accent: #B5452C; --kw-on-accent: #FFFFFF;
+  --kw-logo: url("{{logo:washi-light.svg}}");
+}
+html[dark] {
+  --kw-bg: #141413; --kw-ink: #ECE8E0; --kw-sub: #A39E94; --kw-soft: #1F1E1B;
+  --kw-line: #34322E; --kw-accent: #D9694F; --kw-on-accent: #141413;
+  --kw-logo: url("{{logo:washi-dark.svg}}");
+}
+html {
+  --kw-bw: 1px;
+  --kw-r: 6px;
+  --kw-r-lg: 8px;
+  --kw-pill: 4px;
+  --kw-avatar-r: 50%;
+  --kw-shadow-sm: none;
+  --kw-shadow: none;
+  --kw-shadow-lg: none;
+  --kw-shadow-hover: 0 6px 18px rgba(0,0,0,.12);
+  --kw-lift: translateY(-2px);
+  --kw-header-bw: 1px;
+  --kw-thumb-filter: saturate(.85);
+  --kw-font-body: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --kw-font-display: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --kw-font-meta: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+  --kw-display-weight: 700;
+  --kw-logo-text: "動画";
+  --kw-logo-size: 32px;
+  --kw-now-playing: "再生中";
+  --kw-next-label: "次の動画";
+}

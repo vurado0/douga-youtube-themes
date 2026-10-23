@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>DOUGA preview</title>
+<link rel="stylesheet" href="node_modules/@fontsource/dotgothic16/400.css">
+<link rel="stylesheet" href="node_modules/@fontsource/m-plus-rounded-1c/400.css">
+<link rel="stylesheet" href="node_modules/@fontsource/m-plus-rounded-1c/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/m-plus-rounded-1c/800.css">
+<link rel="stylesheet" href="node_modules/@fontsource/zen-maru-gothic/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/zen-maru-gothic/900.css">
+<link rel="stylesheet" href="node_modules/@fontsource/shippori-mincho/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-jp/400.css">
+<link rel="stylesheet" href="node_modules/@fontsource/noto-sans-jp/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/mochiy-pop-one/400.css">
+<link rel="stylesheet" href="node_modules/@fontsource/zen-kaku-gothic-new/400.css">
+<link rel="stylesheet" href="node_modules/@fontsource/zen-kaku-gothic-new/700.css">
+<link rel="stylesheet" href="node_modules/@fontsource/zen-kaku-gothic-new/900.css">
+<link rel="stylesheet" href="demo.css">
+<script>
+  const params = new URLSearchParams(location.search);
+  if (params.get('mode') !== 'light') document.documentElement.setAttribute('dark', '');
+  try { localStorage.setItem('douga-theme', params.get('theme') || 'shirokuro'); } catch (e) {}
+</script>
+</head>
+<body>
+<ytd-app></ytd-app>
+<script>
+(() => {
+  const view = new URLSearchParams(location.search).get('view') || 'home';
+  const h = (tag, attrs = {}, ...kids) => {
+    const el = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === 'class') el.className = v; else if (k === 'html') el.innerHTML = v; else el.setAttribute(k, v);
+    }
+    kids.flat().forEach((k) => el.append(k));
+    return el;
+  };
+  const icon = (d) => h('span', { html: `<svg width="24" height="24" viewBox="0 0 24 24">${d}</svg>` });
+  const ICONS = {
+    menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+    search: '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/>',
+    mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+    bell: '<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+    home: '<path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/>',
+    shorts: '<path d="M14 3l-7 4a4 4 0 0 0 0 7l1 .5-1 .5a4 4 0 0 0 4 7l7-4a4 4 0 0 0 0-7l-1-.5 1-.5a4 4 0 0 0-4-7z"/>',
+    subs: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M6 4h12M10 11l5 2.5-5 2.5z"/>',
+    you: '<circle cx="12" cy="9" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+    like: '<path d="M7 10v10H4V10zM7 10l4-7a2 2 0 0 1 3 2l-1 4h6a2 2 0 0 1 2 2.3l-1.2 6.4A2 2 0 0 1 17.8 20H7"/>',
+    dislike: '<path d="M17 14V4h3v10zM17 14l-4 7a2 2 0 0 1-3-2l1-4H5a2 2 0 0 1-2-2.3l1.2-6.4A2 2 0 0 1 6.2 4H17"/>',
+    share: '<path d="M14 5l7 7-7 7M21 12H9a6 6 0 0 0-6 6"/>',
+    save: '<path d="M6 3h12v18l-6-4-6 4z"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>'
+  };
+  const VIDEOS = [
+    ['東京の夜を一晩中歩いてみた｜深夜散歩 Vlog', '夜さんぽ部', '12万 回視聴 ・ 3 日前', '24:12'],
+    ['プロが教える最強のおにぎり 5 選', 'まんぷく食堂', '48万 回視聴 ・ 1 週間前', '13:05'],
+    ['ゼロから作るドット絵ゲーム #1', 'ピクセル工房', '3.1万 回視聴 ・ 5 時間前', '42:18'],
+    ['富士山の朝焼けタイムラプス 4K', 'そらいろ写真館', '96万 回視聴 ・ 1 年前', '8:47'],
+    ['JLPT N2 文法まとめ｜これだけで合格', 'にほんご塾', '21万 回視聴 ・ 2 か月前', '1:02:44'],
+    ['シティポップ作業用 BGM ― 夜のドライブ', 'Lo-Fi 喫茶', '5,203 回視聴 ・ 6 時間前', '58:20'],
+    ['100 円ショップだけでデスク改造', 'くらしラボ', '4.7万 回視聴 ・ 4 日前', '16:31'],
+    ['京都・嵐山 さんぽガイド 2026', '旅するカメラ', '1.9万 回視聴 ・ 2 週間前', '19:09']
+  ];
+  const lockup = (v, i, compact) => h('yt-lockup-view-model', { class: compact ? 'compact' : '' },
+    h('a', { class: 'ytLockupViewModelContentImage', href: '#' },
+      h('yt-thumbnail-view-model', {},
+        h('div', { class: 'ytThumbnailViewModelImage' }, h('img', { src: `assets/thumb${(i % 8) + 1}.jpg`, alt: '' })),
+        h('yt-thumbnail-bottom-overlay-view-model', {},
+          h('badge-shape', { class: 'ytBadgeShapeHost ytBadgeShapeThumbnailDefault' }, h('div', {}, v[3]))))),
+    h('div', { class: 'lockup-meta' },
+      compact ? '' : h('yt-avatar-shape', {}, h('img', { class: 'ytSpecAvatarShapeImage', src: `assets/avatar${(i % 6) + 1}.png`, alt: '' })),
+      h('div', {},
+        h('h3', {}, h('a', { class: 'ytLockupMetadataViewModelTitle', href: '#' }, h('span', {}, v[0]))),
+        h('span', { class: 'ytContentMetadataViewModelMetadataText' }, v[1]),
+        h('span', { class: 'ytContentMetadataViewModelMetadataText' }, v[2]))));
+  const chip = (label, active) => h('yt-chip-cloud-chip-renderer', {},
+    h('chip-shape', {}, h('button', { class: 'ytChipShapeButtonReset' },
+      h('div', { class: 'ytChipShapeChip' + (active ? ' ytChipShapeActive' : '') }, h('div', {}, label)))));
+  const tonal = (content, extra = '') => h('button', { class: 'ytSpecButtonShapeNextHost ytSpecButtonShapeNextTonal ' + extra }, ...content);
+
+  const masthead = h('div', { id: 'masthead-container', class: 'ytd-app' },
+    h('ytd-masthead', {}, h('div', { id: 'container', class: 'ytd-masthead' },
+      h('div', { class: 'mh-left' }, icon(ICONS.menu),
+        h('ytd-topbar-logo-renderer', {}, h('a', { id: 'logo', href: '#' }, h('div', {}, h('ytd-logo', {}, 'VideoSite')), h('span', { id: 'country-code' }, 'JP')))),
+      h('yt-searchbox', {}, h('form', { class: 'sb-form' },
+        h('div', { class: 'ytSearchboxComponentInputBox' }, h('input', { name: 'search_query', placeholder: '検索', 'aria-label': '検索' })),
+        h('button', { class: 'ytSearchboxComponentSearchButton', type: 'button', 'aria-label': '検索' }, icon(ICONS.search)))),
+      h('div', { class: 'mh-right' }, icon(ICONS.mic),
+        tonal([icon(ICONS.plus), '作成']),
+        h('div', { class: 'bell' }, icon(ICONS.bell), h('div', { class: 'ytSpecIconBadgeShapeBadge' }, '9+')),
+        h('div', { class: 'ytSpecAvatarShapeAvatarSize' }, h('img', { src: 'assets/avatar2.png', alt: '' }))))));
+  const guide = h('ytd-mini-guide-renderer', {},
+    ...[['home', 'ホーム', true], ['shorts', 'ショート'], ['subs', '登録チャンネル'], ['you', 'マイページ']].map(([k, label, sel]) =>
+      h('ytd-mini-guide-entry-renderer', sel ? { 'aria-selected': 'true' } : {}, h('a', { href: '#' }, icon(ICONS[k]), label))));
+
+  let main;
+  if (view === 'watch') {
+    main = h('ytd-watch-flexy', {}, h('div', { class: 'watch' },
+      h('div', { class: 'watch-primary' },
+        h('div', { id: 'ytd-player' }, h('img', { src: 'assets/thumb4.jpg', alt: '' }),
+          h('div', { class: 'ytp-chrome-bottom' },
+            h('div', { class: 'ytp-progress' }, h('div', { class: 'ytp-load-progress' }), h('div', { class: 'ytp-play-progress' }), h('div', { class: 'ytp-scrubber-button' })),
+            h('div', { class: 'ytp-row' }, h('span', { class: 'ytp-time-display' }, h('span', {}, '2:28 / 8:47')), h('span', {}, '字幕 ・ 設定 ・ 全画面')))),
+        h('ytd-watch-metadata', {},
+          h('div', { id: 'title' }, h('h1', {}, h('span', {}, VIDEOS[3][0]))),
+          h('div', { class: 'owner-row' },
+            h('div', { class: 'owner' },
+              h('div', { class: 'ytSpecAvatarShapeAvatarSize' }, h('img', { src: 'assets/avatar4.png', alt: '' })),
+              h('div', {}, h('ytd-channel-name', { id: 'channel-name', class: 'ytd-video-owner-renderer' }, h('b', {}, VIDEOS[3][1])), h('span', { id: 'owner-sub-count' }, 'チャンネル登録者数 8.2万人')),
+              h('button', { class: 'ytSpecButtonShapeNextHost ytSpecButtonShapeNextFilled' }, 'チャンネル登録')),
+            h('div', { class: 'actions' },
+              h('segmented-like-dislike-button-view-model', {},
+                h('like-button-view-model', {}, h('button', { class: 'ytSpecButtonShapeNextHost ytSpecButtonShapeNextTonal', 'aria-pressed': 'true' }, icon(ICONS.like), '1.7万')),
+                h('button', { class: 'ytSpecButtonShapeNextHost ytSpecButtonShapeNextTonal ytSpecButtonShapeNextSegmentedEnd', 'aria-label': '低評価' }, icon(ICONS.dislike))),
+              tonal([icon(ICONS.share), '共有']), tonal([icon(ICONS.save), '保存']))),
+          h('div', { id: 'description' },
+            h('ytd-watch-info-text', {}, h('span', {}, '96万 回視聴'), h('span', {}, '1 年前')),
+            h('div', {}, '富士山五合目から撮影した朝焼けのタイムラプスです。BGM・機材は ', h('a', { href: '#' }, '概要欄のリンク'), ' から。')))),
+      h('div', { class: 'watch-secondary' },
+        h('ytd-watch-next-secondary-results-renderer', {},
+          h('div', { class: 'related-chips' }, chip('すべて', true), chip('関連動画'), chip('視聴済み')),
+          ...VIDEOS.filter((_, i) => i !== 3).slice(0, 6).map((v, i) => lockup(v, i === 3 ? 7 : i, true))))));
+  } else {
+    main = h('ytd-browse', {},
+      h('ytd-feed-filter-chip-bar-renderer', {}, h('div', { id: 'chips' },
+        ...['すべて', 'ゲーム', 'ライブ', '音楽', 'ポッドキャスト', '料理', '旅行', 'アニメ', '最近アップロードされた動画'].map((c, i) => chip(c, i === 0)))),
+      h('ytd-rich-grid-renderer', {}, h('div', { class: 'grid', id: 'contents' },
+        ...VIDEOS.map((v, i) => h('ytd-rich-item-renderer', {}, lockup(v, i))))));
+  }
+  document.querySelector('ytd-app').append(masthead, h('div', { id: 'page-manager', class: 'ytd-app' }, guide, main));
+
+  const s = document.createElement('script');
+  s.src = '../dist/douga.user.js';
+  s.onload = () => document.dispatchEvent(new Event('yt-navigate-finish'));
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

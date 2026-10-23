@@ -1,0 +1,32 @@
+/* @id neon
+   @vol 04
+   @name Neon Yoichi
+   @jp 夜市
+   @tagline Night-market neon, scanlines and a cyan glow.
+   @swatches #07060B,#2BF5FF,#FF2BD6,#FFE45C */
+
+html:not([dark]), html[dark] {
+  --kw-bg: #07060B; --kw-ink: #F4F1FF; --kw-sub: #A79FC2; --kw-soft: #13111C;
+  --kw-line: #2BF5FF; --kw-accent: #FF2BD6; --kw-on-accent: #07060B;
+  --kw-logo: url("{{logo:neon.svg}}");
+  color-scheme: dark;
+}
+html {
+  --kw-bw: 1.5px;
+  --kw-r: 12px;
+  --kw-r-lg: 16px;
+  --kw-shadow-sm: 0 0 10px rgba(43,245,255,.35);
+  --kw-shadow: 0 0 14px rgba(43,245,255,.35);
+  --kw-shadow-lg: 0 0 28px rgba(255,43,214,.35), 0 0 6px rgba(43,245,255,.6);
+  --kw-shadow-hover: 0 0 22px rgba(255,43,214,.55);
+  --kw-lift: translateY(-2px);
+  --kw-pattern: repeating-linear-gradient(0deg, rgba(43,245,255,.045) 0 1px, transparent 1px 4px);
+  --kw-pattern-size: auto;
+  --kw-thumb-filter: saturate(1.2) contrast(1.05);
+  --kw-title-shadow: 0 0 10px rgba(255,43,214,.45);
+  --kw-progress: #2BF5FF;
+  --kw-font-body: 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif;
+  --kw-font-display: 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif;
+  --kw-now-playing: "▶ ON AIR";
+  --kw-next-label: "NEXT ▸ 次の動画";
+}

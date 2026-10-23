@@ -1,0 +1,14 @@
+{
+  "name": "douga-preview",
+  "private": true,
+  "description": "Local webfonts for rendering DOUGA preview screenshots offline",
+  "dependencies": {
+    "@fontsource/dotgothic16": "^5.0.0",
+    "@fontsource/m-plus-rounded-1c": "^5.0.0",
+    "@fontsource/mochiy-pop-one": "^5.0.0",
+    "@fontsource/noto-sans-jp": "^5.0.0",
+    "@fontsource/shippori-mincho": "^5.0.0",
+    "@fontsource/zen-kaku-gothic-new": "^5.0.0",
+    "@fontsource/zen-maru-gothic": "^5.0.0"
+  }
+}

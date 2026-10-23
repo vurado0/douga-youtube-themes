@@ -1,0 +1,378 @@
+/* ==UserStyle==
+@name         DOUGA Vol.03 桜 Sakura Pop — YouTube
+@namespace    https://github.com/vurado0/douga-youtube-themes
+@version      1.0.0
+@description  Pastel petals, plum outlines, blushing mascot.
+@preprocessor default
+==/UserStyle== */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Zen+Maru+Gothic:wght@700;900&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Mochiy+Pop+One&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap');
+
+@-moz-document domain("youtube.com") {
+/* ═══════════════════════════════════════════════════════════════
+   DOUGA どうが — base layer
+   Maps YouTube's own design tokens and components onto --kw-* tokens.
+   Every theme in src/themes/ only sets tokens; this file does the work.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Default shape & type tokens (themes override these) ── */
+html {
+  --kw-bw: 2.5px;                 /* border width */
+  --kw-r: 16px;                   /* thumbnail / card radius */
+  --kw-r-lg: 22px;                /* player & panels */
+  --kw-pill: 999px;               /* chips & buttons */
+  --kw-avatar-r: 30%;
+  --kw-shadow-sm: 3px 3px 0 var(--kw-line);
+  --kw-shadow: 4px 4px 0 var(--kw-line);
+  --kw-shadow-lg: 8px 8px 0 var(--kw-line);
+  --kw-shadow-hover: 6px 6px 0 var(--kw-line);
+  --kw-lift: translate(-2px, -2px);
+  --kw-pattern: none;
+  --kw-pattern-size: 16px 16px;
+  --kw-thumb-filter: none;
+  --kw-title-shadow: none;
+  --kw-progress: var(--kw-accent);
+  --kw-header-bw: 3px;
+  --kw-font-body: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', sans-serif;
+  --kw-font-display: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', sans-serif;
+  --kw-font-meta: 'DotGothic16', 'Osaka-Mono', ui-monospace, monospace;
+  --kw-display-weight: 900;
+  --kw-logo-text: "どうが";
+  --kw-logo-size: 36px;
+  --kw-now-playing: "✦ NOW PLAYING ✦";
+  --kw-next-label: "✦ つぎのどうが";
+}
+
+/* ── YouTube colour variables → theme tokens ── */
+html, html[dark], ytd-app, ytd-masthead, ytd-popup-container {
+  --yt-spec-base-background: var(--kw-bg) !important;
+  --yt-spec-raised-background: var(--kw-bg) !important;
+  --yt-spec-menu-background: var(--kw-bg) !important;
+  --yt-spec-inverted-background: var(--kw-ink) !important;
+  --yt-spec-additive-background: var(--kw-soft) !important;
+  --yt-spec-outline: var(--kw-line) !important;
+  --yt-spec-text-primary: var(--kw-ink) !important;
+  --yt-spec-text-secondary: var(--kw-sub) !important;
+  --yt-spec-text-disabled: var(--kw-sub) !important;
+  --yt-spec-text-primary-inverse: var(--kw-bg) !important;
+  --yt-spec-call-to-action: var(--kw-accent) !important;
+  --yt-spec-call-to-action-inverse: var(--kw-bg) !important;
+  --yt-spec-icon-active-other: var(--kw-ink) !important;
+  --yt-spec-icon-inactive: var(--kw-ink) !important;
+  --yt-spec-icon-disabled: var(--kw-sub) !important;
+  --yt-spec-badge-chip-background: var(--kw-soft) !important;
+  --yt-spec-10-percent-layer: var(--kw-soft) !important;
+  --yt-spec-brand-background-solid: var(--kw-bg) !important;
+  --yt-spec-brand-background-primary: var(--kw-bg) !important;
+  --yt-spec-brand-background-secondary: var(--kw-bg) !important;
+  --yt-spec-general-background-a: var(--kw-bg) !important;
+  --yt-spec-general-background-b: var(--kw-bg) !important;
+  --yt-spec-general-background-c: var(--kw-soft) !important;
+  --yt-spec-static-brand-red: var(--kw-accent) !important;
+  --yt-spec-brand-icon-active: var(--kw-accent) !important;
+  --yt-spec-brand-button-background: var(--kw-accent) !important;
+  --yt-spec-red-indicator: var(--kw-accent) !important;
+  --yt-spec-themed-blue: var(--kw-accent) !important;
+  --yt-spec-suggested-action: var(--kw-soft) !important;
+  --yt-spec-mono-filled: var(--kw-ink) !important;
+  --yt-spec-mono-tonal: var(--kw-soft) !important;
+  --yt-brand-youtube-red: var(--kw-accent) !important;
+}
+
+/* ── Page background ── */
+html, body, ytd-app { background-color: var(--kw-bg) !important; }
+ytd-app {
+  background-image: var(--kw-pattern) !important;
+  background-size: var(--kw-pattern-size) !important;
+  background-attachment: fixed !important;
+}
+ytd-browse, ytd-watch-flexy, ytd-search, #page-manager.ytd-app,
+ytd-two-column-browse-results-renderer, ytd-rich-grid-renderer,
+ytd-feed-filter-chip-bar-renderer, #chips-wrapper.ytd-feed-filter-chip-bar-renderer {
+  background: transparent !important;
+}
+::selection { background: var(--kw-accent); color: var(--kw-on-accent); }
+
+/* ── Typography ── */
+ytd-app, ytd-app *, ytd-popup-container *, input, button, textarea {
+  font-family: var(--kw-font-body) !important;
+}
+#video-title, #video-title-link, h1.ytd-watch-metadata, ytd-watch-metadata h1, ytd-watch-metadata h1 *,
+[class*="lockup-metadata-view-model__title"], [class*="lockup-metadata-view-model__title"] *,
+[class*="LockupMetadataViewModelTitle"], [class*="LockupMetadataViewModelTitle"] *,
+ytd-rich-shelf-renderer #title, ytd-reel-shelf-renderer #title, #title-text.ytd-shelf-renderer,
+ytd-channel-name#channel-name.ytd-video-owner-renderer * {
+  font-family: var(--kw-font-display) !important;
+  font-weight: var(--kw-display-weight) !important;
+  text-shadow: var(--kw-title-shadow);
+}
+#metadata-line, #metadata-line *,
+[class*="content-metadata-view-model__metadata-text"], [class*="ContentMetadataViewModelMetadataText"],
+#owner-sub-count, ytd-watch-info-text, ytd-watch-info-text *, #info-container.ytd-watch-info-text *,
+.ytp-time-display, .ytp-time-display *,
+ytd-thumbnail-overlay-time-status-renderer, ytd-thumbnail-overlay-time-status-renderer *,
+[class*="badge-shape"][class*="thumbnail"], [class*="badge-shape"][class*="thumbnail"] *,
+[class*="BadgeShapeThumbnail"], [class*="BadgeShapeThumbnail"] *,
+.yt-spec-icon-badge-shape__badge, [class*="IconBadgeShapeBadge"] {
+  font-family: var(--kw-font-meta) !important;
+  letter-spacing: .03em;
+}
+
+/* ── Header ── */
+#masthead-container, ytd-masthead, #background.ytd-masthead, #frosted-glass, ytd-masthead #container.ytd-masthead {
+  background: var(--kw-bg) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+#masthead-container.ytd-app { border-bottom: var(--kw-header-bw) solid var(--kw-line) !important; }
+
+/* Logo → theme mascot + wordmark */
+ytd-topbar-logo-renderer #logo-icon, ytd-topbar-logo-renderer #country-code,
+ytd-topbar-logo-renderer yt-icon, ytd-topbar-logo-renderer ytd-logo { display: none !important; }
+ytd-topbar-logo-renderer a#logo {
+  display: inline-flex !important; align-items: center; gap: 8px;
+  text-decoration: none !important; width: auto !important;
+}
+ytd-topbar-logo-renderer a#logo::before {
+  content: ""; flex: none;
+  width: var(--kw-logo-size); height: var(--kw-logo-size);
+  background: var(--kw-logo) center / contain no-repeat;
+}
+ytd-topbar-logo-renderer a#logo::after {
+  content: var(--kw-logo-text);
+  font-family: var(--kw-font-display); font-weight: var(--kw-display-weight);
+  font-size: 22px; letter-spacing: .08em; color: var(--kw-ink); white-space: nowrap;
+  text-shadow: var(--kw-title-shadow);
+}
+
+/* Search */
+ytd-searchbox, yt-searchbox { filter: drop-shadow(var(--kw-shadow-sm)); }
+ytd-searchbox #container.ytd-searchbox, [class*="SearchboxComponentInputBox"] {
+  background: var(--kw-bg) !important;
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  border-right: 0 !important;
+  border-radius: var(--kw-pill) 0 0 var(--kw-pill) !important;
+  box-shadow: none !important;
+}
+#search-icon-legacy, [class*="SearchboxComponentSearchButton"] {
+  background: var(--kw-accent) !important;
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  border-radius: 0 var(--kw-pill) var(--kw-pill) 0 !important;
+  color: var(--kw-on-accent) !important;
+}
+#search-icon-legacy *, [class*="SearchboxComponentSearchButton"] * {
+  color: var(--kw-on-accent) !important; fill: var(--kw-on-accent) !important;
+}
+
+/* Notification counter */
+.yt-spec-icon-badge-shape__badge, [class*="IconBadgeShapeBadge"] {
+  background: var(--kw-accent) !important; color: var(--kw-on-accent) !important;
+  border: 2px solid var(--kw-bg) !important; border-radius: 10px !important;
+}
+
+/* ── Side guide ── */
+#guide-content, tp-yt-app-drawer #contentContainer, ytd-mini-guide-renderer, ytd-guide-renderer {
+  background: var(--kw-bg) !important;
+}
+ytd-guide-entry-renderer[active] tp-yt-paper-item,
+ytd-mini-guide-entry-renderer[aria-selected="true"] a {
+  background: var(--kw-accent) !important; color: var(--kw-on-accent) !important;
+  border-radius: var(--kw-r) !important;
+}
+ytd-guide-entry-renderer[active] tp-yt-paper-item *,
+ytd-mini-guide-entry-renderer[aria-selected="true"] a * {
+  color: var(--kw-on-accent) !important; fill: var(--kw-on-accent) !important;
+}
+
+/* ── Filter chips ── */
+yt-chip-cloud-chip-renderer #chip-container,
+yt-chip-cloud-chip-renderer [class*="ChipShapeChip"] {
+  background: var(--kw-bg) !important; color: var(--kw-ink) !important;
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  border-radius: var(--kw-pill) !important;
+  font-weight: 800 !important;
+}
+yt-chip-cloud-chip-renderer[selected] #chip-container,
+yt-chip-cloud-chip-renderer [class*="ChipShapeActive"] {
+  background: var(--kw-accent) !important; color: var(--kw-on-accent) !important;
+}
+yt-chip-cloud-chip-renderer[selected] #chip-container *,
+yt-chip-cloud-chip-renderer [class*="ChipShapeActive"] * { color: var(--kw-on-accent) !important; }
+
+/* ── Buttons as stickers ── */
+[class*="button-shape-next--tonal"], [class*="button-shape-next--outline"],
+[class*="ButtonShapeNextTonal"], [class*="ButtonShapeNextOutline"] {
+  background: var(--kw-bg) !important; color: var(--kw-ink) !important;
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  box-shadow: var(--kw-shadow-sm) !important;
+  font-weight: 800 !important;
+}
+[class*="button-shape-next--filled"], [class*="ButtonShapeNextFilled"] {
+  background: var(--kw-accent) !important; color: var(--kw-on-accent) !important;
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  box-shadow: var(--kw-shadow-sm) !important;
+  font-weight: 800 !important;
+}
+[class*="button-shape-next--overlay"], [class*="ButtonShapeNextOverlay"],
+.ytp-chrome-bottom [class*="button-shape-next"] { box-shadow: none !important; border: 0 !important; }
+segmented-like-dislike-button-view-model { filter: drop-shadow(var(--kw-shadow-sm)); }
+segmented-like-dislike-button-view-model [class*="button-shape-next"],
+segmented-like-dislike-button-view-model [class*="ButtonShapeNext"] { box-shadow: none !important; }
+segmented-like-dislike-button-view-model [class*="segmented-end"],
+segmented-like-dislike-button-view-model [class*="SegmentedEnd"] { border-left: 0 !important; }
+like-button-view-model button[aria-pressed="true"] {
+  background: var(--kw-accent) !important; color: var(--kw-on-accent) !important;
+}
+like-button-view-model button[aria-pressed="true"] * {
+  color: var(--kw-on-accent) !important; fill: var(--kw-on-accent) !important;
+}
+
+/* ── Thumbnails as stickers ── */
+ytd-thumbnail, yt-thumbnail-view-model,
+[class*="hortsLockupViewModelHostThumbnailContainer"] {
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  border-radius: var(--kw-r) !important;
+  box-shadow: var(--kw-shadow) !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+ytd-rich-item-renderer:hover ytd-thumbnail, ytd-rich-item-renderer:hover yt-thumbnail-view-model,
+yt-lockup-view-model:hover yt-thumbnail-view-model, ytd-compact-video-renderer:hover ytd-thumbnail,
+ytd-video-renderer:hover ytd-thumbnail {
+  transform: var(--kw-lift);
+  box-shadow: var(--kw-shadow-hover) !important;
+}
+ytd-thumbnail img, yt-thumbnail-view-model img,
+[class*="hortsLockupViewModelHostThumbnailContainer"] img {
+  filter: var(--kw-thumb-filter);
+  transition: filter .25s ease;
+}
+ytd-rich-item-renderer:hover img, yt-lockup-view-model:hover img, ytd-compact-video-renderer:hover img,
+ytd-video-renderer:hover img, ytm-shorts-lockup-view-model:hover img, ytm-shorts-lockup-view-model-v2:hover img {
+  filter: none;
+}
+/* Duration & live badges */
+ytd-thumbnail-overlay-time-status-renderer,
+[class*="badge-shape"][class*="thumbnail"], [class*="BadgeShapeThumbnail"] {
+  background: var(--kw-accent) !important; color: var(--kw-on-accent) !important;
+  border-radius: 8px !important;
+}
+ytd-thumbnail-overlay-time-status-renderer *,
+[class*="badge-shape"][class*="thumbnail"] *, [class*="BadgeShapeThumbnail"] * {
+  color: var(--kw-on-accent) !important; fill: var(--kw-on-accent) !important;
+}
+#progress.ytd-thumbnail-overlay-resume-playback-renderer,
+[class*="thumbnail-overlay-progress-bar"] [class*="progress"] { background: var(--kw-progress) !important; }
+
+/* Avatars */
+#avatar img, yt-avatar-shape img, yt-img-shadow#avatar, yt-img-shadow.ytd-video-owner-renderer,
+[class*="avatar-shape__image"], [class*="AvatarShapeImage"], [class*="AvatarShapeAvatarSize"] {
+  border-radius: var(--kw-avatar-r) !important;
+}
+#avatar img, yt-avatar-shape img { filter: var(--kw-thumb-filter); }
+
+/* ── Watch page ── */
+#cinematics, #cinematics-container { display: none !important; }
+ytd-watch-flexy:not([theater]):not([fullscreen]) #ytd-player {
+  border-radius: var(--kw-r-lg) !important;
+  outline: var(--kw-bw) solid var(--kw-line) !important;
+  box-shadow: var(--kw-shadow-lg) !important;
+  overflow: hidden !important;
+}
+.ytp-play-progress, .ytp-swatch-background-color,
+.ytp-scrubber-button, .ytp-volume-slider-handle, .ytp-volume-slider-handle::before {
+  background: var(--kw-progress) !important;
+}
+.ytp-scrubber-button { border: 2px solid #0A0A0A !important; box-sizing: border-box !important; }
+.ytp-load-progress { background: rgba(255,255,255,.35) !important; }
+
+ytd-watch-metadata #title::before {
+  content: var(--kw-now-playing);
+  display: inline-block; margin: 4px 0 10px;
+  padding: 2px 10px; border: 2px solid var(--kw-line); border-radius: 10px;
+  font-family: var(--kw-font-meta); font-size: 12px; letter-spacing: .14em; color: var(--kw-ink);
+}
+ytd-watch-metadata #description, #description.ytd-watch-metadata {
+  background: var(--kw-bg) !important;
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  border-radius: var(--kw-r-lg) !important;
+  box-shadow: var(--kw-shadow) !important;
+}
+#description a, ytd-text-inline-expander a, #content-text a {
+  text-decoration: underline wavy 1px !important; text-underline-offset: 3px;
+}
+
+/* "Up next" header above recommendations */
+ytd-watch-next-secondary-results-renderer { display: block; }
+ytd-watch-next-secondary-results-renderer::before {
+  content: var(--kw-next-label);
+  display: block; margin: 0 0 16px; padding: 12px 18px;
+  border-radius: var(--kw-r); background: var(--kw-accent); color: var(--kw-on-accent);
+  font-family: var(--kw-font-display); font-weight: var(--kw-display-weight);
+  font-size: 18px; letter-spacing: .08em;
+}
+
+/* Comments / description side panel */
+ytd-engagement-panel-section-list-renderer, ytd-engagement-panel-section-list-renderer #content,
+ytd-engagement-panel-title-header-renderer, ytd-engagement-panel-section-list-renderer #header {
+  background: var(--kw-bg) !important;
+}
+ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"] {
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  border-radius: var(--kw-r-lg) !important;
+  box-shadow: var(--kw-shadow) !important;
+  overflow: hidden;
+}
+
+/* ── Menus & popups ── */
+ytd-menu-popup-renderer, ytd-multi-page-menu-renderer, yt-sheet-view-model {
+  background: var(--kw-bg) !important;
+  border: var(--kw-bw) solid var(--kw-line) !important;
+  border-radius: var(--kw-r) !important;
+  box-shadow: var(--kw-shadow) !important;
+}
+
+/* ── Scrollbar ── */
+html { scrollbar-color: var(--kw-line) transparent; }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--kw-line); border-radius: 8px; border: 3px solid var(--kw-bg); }
+
+@media (prefers-reduced-motion: reduce) {
+  ytd-thumbnail, yt-thumbnail-view-model, ytd-thumbnail img, yt-thumbnail-view-model img { transition: none !important; }
+}
+
+html:not([dark]) {
+  --kw-bg: #FFF6F8; --kw-ink: #3B2A33; --kw-sub: #7A5F6B; --kw-soft: #FFE4EC;
+  --kw-line: #3B2A33; --kw-accent: #FF8FB4; --kw-on-accent: #3B2A33;
+  --kw-shade: #FFB3C9;
+  --kw-dot: rgba(255,92,147,.16);
+  --kw-logo: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Crect x=%222.5%22 y=%225%22 width=%2235%22 height=%2231%22 rx=%2213%22 fill=%22%23FF8FB4%22 stroke=%22%233B2A33%22 stroke-width=%222%22/%3E%3Ccircle cx=%2214%22 cy=%2219.5%22 r=%222.4%22 fill=%22%233B2A33%22/%3E%3Ccircle cx=%2226%22 cy=%2219.5%22 r=%222.4%22 fill=%22%233B2A33%22/%3E%3Cellipse cx=%2210%22 cy=%2224%22 rx=%222.6%22 ry=%221.5%22 fill=%22%23FF5C93%22 opacity=%22.8%22/%3E%3Cellipse cx=%2230%22 cy=%2224%22 rx=%222.6%22 ry=%221.5%22 fill=%22%23FF5C93%22 opacity=%22.8%22/%3E%3Cpath d=%22M17 25q1.5 1.8 3 0q1.5 1.8 3 0%22 fill=%22none%22 stroke=%22%233B2A33%22 stroke-width=%221.7%22 stroke-linecap=%22round%22/%3E%3Cg transform=%22translate%2832 6%29%22%3E%3Ccircle r=%223.6%22 fill=%22%23fff%22 stroke=%22%233B2A33%22 stroke-width=%221.2%22/%3E%3Ccircle r=%221.2%22 fill=%22%23FF5C93%22/%3E%3C/g%3E%3C/svg%3E");
+}
+html[dark] {
+  --kw-bg: #1E1520; --kw-ink: #FFE9F0; --kw-sub: #C9A6B4; --kw-soft: #2A1D2C;
+  --kw-line: #FFB3C9; --kw-accent: #FF8FB4; --kw-on-accent: #1E1520;
+  --kw-shade: #FF5C93;
+  --kw-dot: rgba(255,143,180,.14);
+  --kw-logo: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Crect x=%222.5%22 y=%225%22 width=%2235%22 height=%2231%22 rx=%2213%22 fill=%22%23FF8FB4%22 stroke=%22%23FFE9F0%22 stroke-width=%222%22/%3E%3Ccircle cx=%2214%22 cy=%2219.5%22 r=%222.4%22 fill=%22%231E1520%22/%3E%3Ccircle cx=%2226%22 cy=%2219.5%22 r=%222.4%22 fill=%22%231E1520%22/%3E%3Cellipse cx=%2210%22 cy=%2224%22 rx=%222.6%22 ry=%221.5%22 fill=%22%23FF5C93%22 opacity=%22.8%22/%3E%3Cellipse cx=%2230%22 cy=%2224%22 rx=%222.6%22 ry=%221.5%22 fill=%22%23FF5C93%22 opacity=%22.8%22/%3E%3Cpath d=%22M17 25q1.5 1.8 3 0q1.5 1.8 3 0%22 fill=%22none%22 stroke=%22%231E1520%22 stroke-width=%221.7%22 stroke-linecap=%22round%22/%3E%3Cg transform=%22translate%2832 6%29%22%3E%3Ccircle r=%223.6%22 fill=%22%231E1520%22 stroke=%22%23FFE9F0%22 stroke-width=%221.2%22/%3E%3Ccircle r=%221.2%22 fill=%22%23FF8FB4%22/%3E%3C/g%3E%3C/svg%3E");
+}
+html {
+  --kw-bw: 2px;
+  --kw-r: 20px;
+  --kw-r-lg: 26px;
+  --kw-avatar-r: 50%;
+  --kw-shadow-sm: 3px 3px 0 var(--kw-shade);
+  --kw-shadow: 4px 4px 0 var(--kw-shade);
+  --kw-shadow-lg: 7px 7px 0 var(--kw-shade);
+  --kw-shadow-hover: 6px 6px 0 var(--kw-shade);
+  --kw-pattern: radial-gradient(var(--kw-dot) 2px, transparent 2.6px);
+  --kw-pattern-size: 22px 22px;
+  --kw-thumb-filter: saturate(.9) brightness(1.03);
+  --kw-progress: #FF8FB4;
+  --kw-font-display: 'Mochiy Pop One', 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
+  --kw-display-weight: 400;
+  --kw-font-meta: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', sans-serif;
+  --kw-now-playing: "✿ いまみてる";
+  --kw-next-label: "✿ つぎはこれ";
+}
+}

@@ -1,0 +1,36 @@
+/* @id game
+   @vol 05
+   @name 8-Bit Pocket
+   @jp ゲーム
+   @tagline Four shades of handheld green. Press start.
+   @swatches #9BBC0F,#8BAC0F,#306230,#0F380F */
+
+html:not([dark]), html[dark] {
+  --kw-bg: #9BBC0F; --kw-ink: #0F380F; --kw-sub: #306230; --kw-soft: #8BAC0F;
+  --kw-line: #0F380F; --kw-accent: #0F380F; --kw-on-accent: #9BBC0F;
+  --kw-logo: url("{{logo:game.svg}}");
+  color-scheme: light;
+}
+html {
+  --kw-bw: 3px;
+  --kw-r: 0px;
+  --kw-r-lg: 0px;
+  --kw-pill: 0px;
+  --kw-avatar-r: 0px;
+  --kw-shadow-sm: 3px 3px 0 #306230;
+  --kw-shadow: 4px 4px 0 #306230;
+  --kw-shadow-lg: 8px 8px 0 #306230;
+  --kw-shadow-hover: 6px 6px 0 #306230;
+  --kw-pattern: linear-gradient(rgba(15,56,15,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(15,56,15,.06) 1px, transparent 1px);
+  --kw-pattern-size: 4px 4px;
+  --kw-thumb-filter: grayscale(1) sepia(1) hue-rotate(38deg) saturate(2.4) contrast(1.05) brightness(.95);
+  --kw-progress: #9BBC0F;
+  --kw-font-body: 'DotGothic16', 'Osaka-Mono', monospace;
+  --kw-font-display: 'DotGothic16', 'Osaka-Mono', monospace;
+  --kw-display-weight: 400;
+  --kw-logo-text: "DOUGA";
+  --kw-logo-size: 32px;
+  --kw-now-playing: "▶ PLAYER 1";
+  --kw-next-label: "NEXT STAGE ▸";
+}
+ytd-topbar-logo-renderer a#logo::before { image-rendering: pixelated; }
